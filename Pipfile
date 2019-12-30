@@ -34,7 +34,6 @@ urllib3 = "==1.25.7"
 whitenoise = "==5.0.1"
 yarl = "==1.4.2"
 Django = "==3.0.1"
-dotenv = "*"
 python-dotenv = "*"
 
 [requires]
