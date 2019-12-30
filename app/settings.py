@@ -81,8 +81,18 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'app'),
+        'USER': 'ypuris',
+        'PASSWORD': 'ypuris',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
