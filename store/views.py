@@ -14,14 +14,7 @@ from rest_framework.response import Response
 from .models import Shop, Address, Coordinates
 from .serializers import AddressSerializer, CoordinatesSerializer
 from . import services
-from .services import service_address, service_coordinate, service_parse_location, service_search_parser, service_parse_domain
-
-class TestDomainView(APIView):
-    
-    def get(self, request, format=None):
-        service_parse_domain.parse_domain()
-        
-        return Response('success')
+from .services import service_address, service_coordinate, service_parse_location, service_search_parser
 
 class AddressView(APIView):
     

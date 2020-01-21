@@ -80,6 +80,19 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# FOR HOME ENV
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'geo_db', #Ваши новая база
+#         'USER': 'postgres', #Ваши данные пользователя
+#         'PASSWORD': 'postgres', #Ваши пароль от пользователя
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
+# FOR WORK ENV
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -87,7 +100,7 @@ DATABASES = {
         'USER': 'postgres', #Ваши данные пользователя
         'PASSWORD': 'postgres', #Ваши пароль от пользователя
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
@@ -129,3 +142,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# Activate django-heroku
+django_heroku.settings(locals())
