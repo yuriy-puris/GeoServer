@@ -27,10 +27,3 @@ def parse_coordinates():
                 lng = response['results'][0]['geometry']['location']['lng']
             )
             model_coord.save()
-        else:
-            model_coord = Coordinates(
-                adress_id_id = address[1],
-                lat = None,
-                lng = None
-            )
-            model_coord.save()

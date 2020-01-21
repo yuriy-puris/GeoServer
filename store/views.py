@@ -14,7 +14,14 @@ from rest_framework.response import Response
 from .models import Shop, Address, Coordinates
 from .serializers import AddressSerializer, CoordinatesSerializer
 from . import services
-from .services import service_address, service_coordinate, service_parse_location, service_search_parser
+from .services import service_address, service_coordinate, service_parse_location, service_search_parser, service_parse_domain
+
+class TestDomainView(APIView):
+    
+    def get(self, request, format=None):
+        service_parse_domain.parse_domain()
+        
+        return Response('success')
 
 class AddressView(APIView):
     
@@ -31,7 +38,7 @@ class AddressView(APIView):
 class CoordinatesView(APIView):
 
     def get(self, request, format=None):
-        # service_coordinate.parse_coordinates()
+        # service_coordinate.service_coordinate()
 
         queryset = Coordinates.objects.all()
         serializer_class = CoordinatesSerializer(queryset, many=True)

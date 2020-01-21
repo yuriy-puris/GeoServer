@@ -6,9 +6,9 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 SECRET_KEY = '!2$og!1@9lcxspmcpilutb9z@2$@&&-3*!0*^nbfcad*w4r2gb'
 
@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'rest_framework',
     'store',
     'corsheaders',
@@ -83,16 +82,14 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'app'),
-        'USER': 'ypuris',
-        'PASSWORD': 'ypuris',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'geo_db', #Ваши новая база
+        'USER': 'postgres', #Ваши данные пользователя
+        'PASSWORD': 'postgres', #Ваши пароль от пользователя
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
@@ -132,9 +129,3 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = "/static/"
-
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
