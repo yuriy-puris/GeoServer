@@ -1,5 +1,5 @@
 CREATE TABLE shop (
-  id INT IDENTITY,
+  id SERIAL,
   name VARCHAR(255) NOT NULL,
   url VARCHAR(255) NOT NULL,
   search_request VARCHAR(255) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE shop (
 );
 
 CREATE TABLE address (
-  id INT IDENTITY,
+  id SERIAL,
   shop_address VARCHAR(255) NOT NULL,
   shop_id INT NOT NULL,
 
@@ -17,7 +17,7 @@ CREATE TABLE address (
 );
 
 CREATE TABLE coordinates (
-  id INT IDENTITY,
+  id SERIAL,
   lat FLOAT,
   lng FLOAT,
   address_id INT NOT NULL,
