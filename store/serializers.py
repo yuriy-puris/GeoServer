@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import Address, Coordinates
+from .models import Shop, Address, Coordinates
+
+class ShopSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Shop
+    fields = '__all__'
 
 class AddressSerializer(serializers.ModelSerializer):
   class Meta:

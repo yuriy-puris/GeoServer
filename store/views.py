@@ -12,9 +12,16 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Shop, Address, Coordinates
-from .serializers import AddressSerializer, CoordinatesSerializer
+from .serializers import ShopSerializer, AddressSerializer, CoordinatesSerializer
 from . import services
 from .services import service_address, service_coordinate, service_parse_location, service_search_parser
+
+class ShopView(APIView):
+    
+    def get(self, request, format=None):
+        queryset = Shop.objects.all()
+        serializer_class = ShopSerializer(queryset, many=True)
+        return Response(serializer_class.data)
 
 class AddressView(APIView):
     
