@@ -27,9 +27,9 @@ class AddressView(APIView):
     
     def get(self, request, format=None):
         # print(services.service_address)
-        # service_address.parser_address_moyo()
-        # service_address.parser_address_allo()
-        # service_address.parser_address_foxtrot()
+        service_address.parser_address_moyo()
+        service_address.parser_address_allo()
+        service_address.parser_address_foxtrot()
         
         queryset = Address.objects.all()
         serializer_class = AddressSerializer(queryset, many=True)
